@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 import HomeScreen from './screen/login_register/logOrRegister';
 import DetailScreen from './screen/DetailScreen';
 import login from './screen/login_register/Login/login';
-import register from './screen/login_register/register/register';
+import register from './screen/login_register/register/Register';
 
 const App = () => {
   return (

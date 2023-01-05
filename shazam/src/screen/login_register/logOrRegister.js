@@ -1,6 +1,5 @@
 import React, {useCallback} from 'react';
 import ButtonShazam from './components/Button';
-import {NavigationContainer} from '@react-navigation/native';
 import {
   SafeAreaView,
   View,
