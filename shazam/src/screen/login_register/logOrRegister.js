@@ -1,18 +1,29 @@
 import React from 'react';
 import ButtonShazam from './components/Button';
-import {SafeAreaView, View, StyleSheet, Text, Image, ImageBackground} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Text,
+  ImageBackground,
+} from 'react-native';
+//import Login from '../../Login/Login';
 
 const LogOrRegister = () => {
   return (
-    <SafeAreaView style={styles.screen}>
-      <ImageBackground source={require('../../assets/Musique.jpeg')}>
-        <Text style={styles.title}>Welcome</Text>
-        <View style={styles.separator}>
-          <ButtonShazam title="login" />
-          <ButtonShazam title="Register" />
-        </View>
-      </ImageBackground>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.screen}>
+        <ImageBackground source={require('../../assets/Musique.jpeg')}>
+          <Text style={styles.title}>Welcome</Text>
+          <View style={styles.separator}>
+            <ButtonShazam title="login" />
+            <ButtonShazam title="Register" />
+          </View>
+        </ImageBackground>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 
@@ -31,10 +42,8 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 200,
-    marginTop: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 300,
   },
 });
 
