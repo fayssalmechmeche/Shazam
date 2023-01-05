@@ -30,7 +30,9 @@ const ItemMusicList = props => {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         flex: 1,
-        border: 'black',
+        borderColor: 'black',
+        borderWidth: 2,
+        alignItems: 'center',
       }}>
       <TouchableOpacity
         onPress={() => console.log('Pressed')}
@@ -39,7 +41,7 @@ const ItemMusicList = props => {
           style={{
             flex: 1,
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
+            justifyContent: 'flex-start',
           }}>
           <Image
             source={{
@@ -48,7 +50,7 @@ const ItemMusicList = props => {
             style={{width: 20, heigth: 20}}
             resizeMode="cover"
           />
-          <Text>{props.title}</Text>
+          <Text style={{marginLeft: 20, width: 200}}>{props.title}</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={onLike} style={{flex: 1}}>
