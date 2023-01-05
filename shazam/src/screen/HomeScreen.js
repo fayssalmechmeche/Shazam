@@ -14,19 +14,19 @@ const Home = props => {
     navigation.navigate('DetailScreen');
   }, [navigation]);
 
-  const goBack = useCallback(() => {
+  /* const goBack = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
-
+ */
   return (
     <SafeAreaView style={styles.screen}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <TouchableOpacity style={styles.btn} onPress={goToDetail}>
           <Text>Détail</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn} onPress={goBack}>
+        {/* <TouchableOpacity style={styles.btn} onPress={goBack}>
           <Text>Retour</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>Home Screen</Text>
