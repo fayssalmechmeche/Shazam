@@ -62,12 +62,6 @@ const Login = () => {
   );
 };
 
-const Item = ({onPress}) => (
-  <TouchableOpacity style={styles.button} onPress={onPress}>
-    <Text>Login</Text>
-  </TouchableOpacity>
-);
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
