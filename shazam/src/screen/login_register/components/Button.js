@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
-const ButtonShazam = ({title}) => {
+const ButtonShazam = ({title, onPress}) => {
   return (
     <View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>
     </View>
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     height: 70,
     width: 250,
     justifyContent: 'center',
+    borderRadius: 30,
   },
   buttonText: {
     fontWeight: 'bold',
