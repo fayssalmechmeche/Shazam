@@ -1,4 +1,5 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 import ButtonShazam from '../components/Button';
 import {
   SafeAreaView,
@@ -10,17 +11,36 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
   const navigation = useNavigation();
   const [pseudo, setPseudo] = useState('');
   const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState('true');
-  const login = 'Admin';
-  const loginPseudo = 'Admin';
+  const [value, setValue] = useState('value');
+
+  const getUser = async () => {
+    try {
+      const data = await AsyncStorage.getItem(pseudo);
+      //console.log(pseudo + " " + data);
+      console.log(value);
+      if (data !== null || data !== '') {
+        setValue(data);
+      } else {
+        return console.log('Pas de données!!!');
+      }
+    } catch (error) {
+      console.log('erreur : ' + error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  });
 
   const validator = useCallback(() => {
-    if (password !== login || pseudo !== loginPseudo) {
+    if (password !== value) {
       setIsValid('false');
       alert('Wrong pseudo and/or wrong password');
     } else {
@@ -28,7 +48,7 @@ const Login = () => {
       alert('You are logged!!!');
       navigation.navigate('DetailScreen');
     }
-  }, [pseudo, password, navigation]);
+  }, [password, value, navigation]);
 
   return (
     <SafeAreaView style={styles.screen}>

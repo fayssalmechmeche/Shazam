@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,12 +8,25 @@ import {
   TextInput,
 } from 'react-native';
 import ButtonShazam from '../components/Button';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Register = () => {
+  const navigation = useNavigation();
   const [pseudo, setPseudo] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isValid, setIsValid] = useState('true');
+  const user = {pseudo: pseudo, password: password};
+
+  const newUser = async () => {
+    try {
+      await AsyncStorage.setItem(user.pseudo, user.password);
+      console.log('registered');
+    } catch (error) {
+      console.log('error: ' + error);
+    }
+  };
 
   useMemo(() => {
     if (
@@ -30,11 +43,17 @@ const Register = () => {
 
   const validator = useCallback(() => {
     if (isValid) {
-      alert('Welcome ' + pseudo);
+      newUser();
+      alert(
+        'Welcome ' +
+          user.pseudo +
+          ' Now you can log in to find your favorite musics',
+      );
+      navigation.navigate('Login');
     } else {
       alert('miss information');
     }
-  }, [pseudo, isValid]);
+  }, [isValid, user.pseudo]);
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -57,7 +76,7 @@ const Register = () => {
             placeholder="mot de passe"
             autoCapitalize="none"
             secureTextEntry="true"
-            value={password}
+            value={user.password}
             onChangeText={setPassword}
           />
           <TextInput
