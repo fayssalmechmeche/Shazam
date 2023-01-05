@@ -1,6 +1,4 @@
-
-import React, {useCallback, useState} from 'react';
-import ButtonShazam from '../components/Button';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,82 +6,86 @@ import {
   Text,
   Image,
   TextInput,
-  TouchableOpacity,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import ButtonShazam from '../components/Button';
 
-const Login = () => {
-  const navigation = useNavigation();
+const Register = () => {
   const [pseudo, setPseudo] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isValid, setIsValid] = useState('true');
-  const login = 'Admin';
-  const loginPseudo = 'Admin';
+
+  useMemo(() => {
+    if (
+      password !== confirmPassword ||
+      pseudo === '' ||
+      password === '' ||
+      password.length < 3
+    ) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [pseudo, password, confirmPassword]);
 
   const validator = useCallback(() => {
-    if (password !== login || pseudo !== loginPseudo) {
-      setIsValid('false');
-      alert('Wrong pseudo and/or wrong password');
+    if (isValid) {
+      alert('Welcome ' + pseudo);
     } else {
-      setIsValid('true');
-      alert('You are logged!!!');
-      navigation.navigate('DetailScreen');
+      alert('miss information');
     }
-  }, [pseudo, password, navigation]);
+  }, [pseudo, isValid]);
 
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Register</Text>
         <Image
-          style={styles.image}
           source={require('../../../assets/Musique.jpeg')}
+          style={styles.photo}
         />
         <View style={{alignItems: 'center'}}>
           <TextInput
-            style={isValid ? styles.form : styles.formRed}
+            style={styles.form}
             autoCapitalize="none"
             placeholder="pseudo"
             value={pseudo}
             onChangeText={setPseudo}
           />
           <TextInput
-            style={isValid ? styles.form : styles.formRed}
+            style={styles.form}
+            placeholder="mot de passe"
             autoCapitalize="none"
             secureTextEntry="true"
-            placeholder="mot de passe"
             value={password}
             onChangeText={setPassword}
           />
-          <ButtonShazam
-            style={styles.button}
-            title="login"
-            onPress={validator}
+          <TextInput
+            style={styles.form}
+            autoCapitalize="none"
+            placeholder="confirmation mot de passe"
+            secureTextEntry="true"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
           />
+          <ButtonShazam title={'Register'} onPress={validator} />
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-const Item = ({onPress}) => (
-  <TouchableOpacity style={styles.button} onPress={onPress}>
-    <Text>Login</Text>
-  </TouchableOpacity>
-);
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
   container: {
-    flex: 0.6,
     justifyContent: 'space-between',
     marginTop: 50,
     flexDirection: 'column',
     alignItems: 'center',
   },
-  image: {
+  photo: {
     marginTop: 30,
     height: 200,
     width: 200,
@@ -103,6 +105,16 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
+  formRed: {
+    marginTop: 30,
+    backgroundColor: 'blanchedalmond',
+    borderColor: 'red',
+    height: 40,
+    width: 350,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+  },
   button: {
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -115,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Register;

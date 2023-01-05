@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     height: 70,
     width: 250,
     justifyContent: 'center',
+    borderRadius: 30,
   },
   buttonText: {
     fontWeight: 'bold',
