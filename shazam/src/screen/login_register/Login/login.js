@@ -1,3 +1,4 @@
+
 import React, {useCallback, useState} from 'react';
 import ButtonShazam from '../components/Button';
 import {
@@ -9,8 +10,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
   const [pseudo, setPseudo] = useState('');
   const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState('true');
@@ -24,8 +27,9 @@ const Login = () => {
     } else {
       setIsValid('true');
       alert('You are logged!!!');
+      navigation.navigate('DetailScreen');
     }
-  }, [pseudo, password]);
+  }, [pseudo, password, navigation]);
 
   return (
     <SafeAreaView style={styles.screen}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import ButtonShazam from './components/Button';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -8,21 +8,28 @@ import {
   Text,
   ImageBackground,
 } from 'react-native';
-//import Login from '../../Login/Login';
 
-const LogOrRegister = () => {
+const LogOrRegister = props => {
+  const {navigation} = props;
+
+  const goToLogin = useCallback(() => {
+    navigation.navigate('Login');
+  }, [navigation]);
+
+  const goToRegister = useCallback(() => {
+    navigation.navigate('Register');
+  }, [navigation]);
+
   return (
-    <NavigationContainer>
-      <SafeAreaView style={styles.screen}>
-        <ImageBackground source={require('../../assets/Musique.jpeg')}>
-          <Text style={styles.title}>Welcome</Text>
-          <View style={styles.separator}>
-            <ButtonShazam title="login" />
-            <ButtonShazam title="Register" />
-          </View>
-        </ImageBackground>
-      </SafeAreaView>
-    </NavigationContainer>
+    <SafeAreaView style={styles.screen}>
+      <ImageBackground source={require('../../assets/Musique.jpeg')}>
+        <Text style={styles.title}>Welcome</Text>
+        <View style={styles.separator}>
+          <ButtonShazam title="Login" onPress={goToLogin} />
+          <ButtonShazam title="Register" onPress={goToRegister} />
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 };
 
