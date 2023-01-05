@@ -8,8 +8,10 @@ import {
   TextInput,
 } from 'react-native';
 import ButtonShazam from '../components/Button';
+import {useNavigation} from '@react-navigation/native';
 
 const Register = () => {
+  const navigation = useNavigation();
   const [pseudo, setPseudo] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -31,10 +33,11 @@ const Register = () => {
   const validator = useCallback(() => {
     if (isValid) {
       alert('Welcome ' + pseudo);
+      navigation.navigate('MusicList');
     } else {
       alert('miss information');
     }
-  }, [pseudo, isValid]);
+  }, [pseudo, isValid, navigation]);
 
   return (
     <SafeAreaView style={styles.screen}>

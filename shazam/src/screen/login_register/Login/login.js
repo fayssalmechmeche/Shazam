@@ -26,7 +26,7 @@ const Login = () => {
     } else {
       setIsValid('true');
       alert('You are logged!!!');
-      navigation.navigate('DetailScreen');
+      navigation.navigate('MusicList');
     }
   }, [pseudo, password, navigation]);
 

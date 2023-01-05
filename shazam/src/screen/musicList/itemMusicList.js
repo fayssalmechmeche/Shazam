@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,13 +8,19 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {linear} from 'react-native/Libraries/Animated/Easing';
+import {useNavigation} from '@react-navigation/native';
 
 const ItemMusicList = props => {
   let [liked, setLike] = useState(false);
+  const navigation = useNavigation();
   const listLiked = [];
   const onLike = () => {
     setLike(!liked);
   };
+
+  const goToDetail = useCallback(() => {
+    navigation.navigate('DetailScreen');
+  }, [navigation]);
 
   useEffect(() => {
     if (listLiked.includes(props.title)) {
@@ -34,9 +40,7 @@ const ItemMusicList = props => {
         borderWidth: 2,
         alignItems: 'center',
       }}>
-      <TouchableOpacity
-        onPress={() => console.log('Pressed')}
-        style={{flex: 6}}>
+      <TouchableOpacity onPress={goToDetail} style={{flex: 6}}>
         <View
           style={{
             flex: 1,
