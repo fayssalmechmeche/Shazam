@@ -79,7 +79,7 @@ const Recording = props => {
       url: 'https://shazam.p.rapidapi.com/songs/v2/detect',
       headers: {
         'content-type': 'text/plain',
-        'X-RapidAPI-Key': '2d4313cf04msh5ce3f31e2e0080cp1d5661jsn00062d2ed553',
+        'X-RapidAPI-Key': 'NEED KEY',
         'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
       },
       data: fileBase64,
