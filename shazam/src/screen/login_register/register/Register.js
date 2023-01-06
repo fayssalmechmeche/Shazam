@@ -55,6 +55,7 @@ const Register = () => {
     }
   }, [isValid, user.pseudo]);
 
+
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.container}>

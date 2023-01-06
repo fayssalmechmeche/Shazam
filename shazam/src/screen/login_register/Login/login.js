@@ -46,7 +46,7 @@ const Login = () => {
     } else {
       setIsValid('true');
       alert('You are logged!!!');
-      navigation.navigate('DetailScreen');
+      navigation.navigate('MusicList');
     }
   }, [password, value, navigation]);
 
@@ -69,7 +69,7 @@ const Login = () => {
           <TextInput
             style={isValid ? styles.form : styles.formRed}
             autoCapitalize="none"
-            secureTextEntry="true"
+            secureTextEntry={true}
             placeholder="mot de passe"
             value={password}
             onChangeText={setPassword}
