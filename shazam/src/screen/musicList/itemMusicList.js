@@ -44,7 +44,6 @@ const ItemMusicList = props => {
       Favorite();
     } else if (!listLiked.includes(props.title)) {
       listLiked.push(props.title);
-      Favorite();
     }
   });
   return (
