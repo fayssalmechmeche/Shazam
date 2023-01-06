@@ -10,6 +10,7 @@ import DetailScreen from './screen/DetailScreen';
 import login from './screen/login_register/Login/login';
 import register from './screen/login_register/register/Register';
 import readMe from './screen/readMe';
+import Recording from './screen/Recording';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Stack.Screen name="MusicList" component={MusicList} />
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
         <Stack.Screen name="ReadMe" component={readMe} />
+        <Stack.Screen name="Recording" component={Recording} />
       </Stack.Navigator>
     </NavigationContainer>
   );
