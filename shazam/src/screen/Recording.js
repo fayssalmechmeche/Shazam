@@ -1,6 +1,6 @@
 import React, {useCallback, useState, useEffect} from 'react';
 import {SafeAreaView, View, StyleSheet, Text, Button} from 'react-native';
-import {PERMISSIONS, requestMultiple} from 'react-native-permissions';
+import {PERMISSIONS, requestMultiple, request} from 'react-native-permissions';
 import AudioRecord from 'react-native-audio-record';
 import axios from 'axios';
 import RNFS from 'react-native-fs';
@@ -18,6 +18,10 @@ const Recording = props => {
       PERMISSIONS.ANDROID.READ_MEDIA_AUDIO,
     ]).then(result => {
       console.log(result);
+    });
+
+    request(PERMISSIONS.IOS.MICROPHONE).then(result => {
+      // …
     });
   };
 
