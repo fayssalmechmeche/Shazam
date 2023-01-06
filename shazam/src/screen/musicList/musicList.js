@@ -43,7 +43,7 @@ const MusicList = () => {
       <FlatList
         data={filteredData}
         renderItem={({item, index}) => {
-          return <ItemMusicList title={item.title} style={{flex: 1}} />;
+          return <ItemMusicList data={item} style={{flex: 1}} />;
         }}
       />
     </SafeAreaView>

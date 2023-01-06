@@ -19,15 +19,15 @@ const ItemMusicList = props => {
   };
 
   const goToDetail = useCallback(() => {
-    navigation.navigate('DetailScreen');
-  }, [navigation]);
+    navigation.navigate('DetailScreen', {data: props.data});
+  }, [navigation, props.data]);
 
   useEffect(() => {
-    if (listLiked.includes(props.title)) {
-      let pos = listLiked.indexOf(props.title);
+    if (listLiked.includes(props.data.title)) {
+      let pos = listLiked.indexOf(props.data.title);
       listLiked.splice(pos, 1);
-    } else if (!listLiked.includes(props.title)) {
-      listLiked.push(props.title);
+    } else if (!listLiked.includes(props.data.title)) {
+      listLiked.push(props.data.title);
     }
   });
   return (
@@ -42,7 +42,7 @@ const ItemMusicList = props => {
             resizeMode="contain"
           />
           <Text style={{marginLeft: 10, width: 200, textAlign: 'left'}}>
-            {props.title}
+            {props.data.title}
           </Text>
         </View>
       </TouchableOpacity>
