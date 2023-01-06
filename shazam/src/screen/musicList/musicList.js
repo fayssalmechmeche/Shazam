@@ -37,7 +37,8 @@ const MusicList = () => {
         <TextInput
           value={filters}
           onChangeText={setFilters}
-          style={{flex: 5}}
+          placeholder={" Rechercher un titre ..."}
+          style={{height: 30, borderColor: 'black', borderWidth: 1}}
         />
       </View>
       <FlatList
