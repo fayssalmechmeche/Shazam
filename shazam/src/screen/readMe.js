@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
 
-const readMe = () => {
+const ReadMe = () => {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -65,7 +65,7 @@ const readMe = () => {
     </SafeAreaView>
   );
 };
-export default readMe;
+export default ReadMe;
 const styles = StyleSheet.create({
   Title: {
     marginTop: 20,
