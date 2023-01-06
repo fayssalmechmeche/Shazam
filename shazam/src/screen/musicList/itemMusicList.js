@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {linear} from 'react-native/Libraries/Animated/Easing';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ItemMusicList = props => {
   let [liked, setLike] = useState(false);
@@ -18,13 +19,14 @@ const ItemMusicList = props => {
     setLike(!liked);
   };
 
-  useEffect(() => {
-    if (liked == true) {
-      return true;
-    } else {
-      return false;
-    }
-  }, [liked]);
+  const Favorite = async () => {
+    try {
+      await AsyncStorage.setItem(props.title, onLike);
+      console.log('Mit dans tes favoris');
+    } catch (e) {}
+    console.log('Pas dans tes favoris');
+  };
+
   /* handleClick() {
       this.setState(state => ({
       isFavorite: !state.isFavorite
@@ -39,8 +41,10 @@ const ItemMusicList = props => {
     if (listLiked.includes(props.title)) {
       let pos = listLiked.indexOf(props.title);
       listLiked.splice(pos, 1);
+      Favorite();
     } else if (!listLiked.includes(props.title)) {
       listLiked.push(props.title);
+      Favorite();
     }
   });
   return (
