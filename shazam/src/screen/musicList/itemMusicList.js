@@ -18,6 +18,19 @@ const ItemMusicList = props => {
     setLike(!liked);
   };
 
+  useEffect(() => {
+    if (liked == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }, [liked]);
+  /* handleClick() {
+      this.setState(state => ({
+      isFavorite: !state.isFavorite
+    }));
+  }; */
+
   const goToDetail = useCallback(() => {
     navigation.navigate('DetailScreen');
   }, [navigation]);
