@@ -36,8 +36,6 @@ Ne pas oublier de remplir les clés API Shazam
 - AsyncStorage -> Permets de stocker en cache des données
 - React-Native-Audio-Record -> Permet d'enregistrer en base64 l'audio
 - React-Native-permissions -> Permet de demander les permissions
-- Buffer
-- concat
 - RNFS -> Permet de modifier un fichier audio 
 - Axios -> Permet de faire des requetes axios
 
