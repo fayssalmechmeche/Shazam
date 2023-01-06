@@ -11,6 +11,7 @@ import login from './screen/login_register/Login/login';
 import register from './screen/login_register/register/Register';
 import ReadMe from './screen/ReadMe';
 import Recording from './screen/Recording';
+import DetailScreenRecord from './screen/DetailScreenRecord';
 
 const App = () => {
   return (
@@ -23,6 +24,10 @@ const App = () => {
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
         <Stack.Screen name="ReadMe" component={ReadMe} />
         <Stack.Screen name="Recording" component={Recording} />
+        <Stack.Screen
+          name="DetailScreenRecord"
+          component={DetailScreenRecord}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

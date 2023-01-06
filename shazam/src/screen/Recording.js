@@ -4,9 +4,9 @@ import {PERMISSIONS, requestMultiple} from 'react-native-permissions';
 import AudioRecord from 'react-native-audio-record';
 import axios from 'axios';
 import RNFS from 'react-native-fs';
-
+import {useNavigation} from '@react-navigation/native';
 const Recording = props => {
-  const {navigation} = props;
+  const navigation = useNavigation();
   let [record, setRecord] = useState(false);
   const onRecord = () => {
     setRecord(!record);
@@ -20,7 +20,7 @@ const Recording = props => {
       console.log(result);
     });
   };
-
+  const [datas, setDatas] = useState('');
   const [audioFile, setAudioFile] = useState('');
   const [recording, setRecording] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +31,10 @@ const Recording = props => {
     AudioRecord.init(options);
     AudioRecord.on('data', data => {});
   }, []);
+
+  const goToRecord = useCallback(() => {
+    navigation.navigate('DetailScreenRecord', {data: datas});
+  }, [navigation, datas]);
 
   const options = {
     sampleRate: 44100, // default 44100
@@ -81,6 +85,9 @@ const Recording = props => {
       .request(options)
       .then(function (response) {
         console.log(response.data);
+        setDatas(response.data);
+        goToRecord();
+        
       })
       .catch(function (error) {
         console.error(error);
