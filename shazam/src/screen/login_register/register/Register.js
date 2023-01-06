@@ -76,7 +76,7 @@ const Register = () => {
             style={styles.form}
             placeholder="mot de passe"
             autoCapitalize="none"
-            secureTextEntry="true"
+            secureTextEntry={true}
             value={user.password}
             onChangeText={setPassword}
           />
@@ -84,7 +84,7 @@ const Register = () => {
             style={styles.form}
             autoCapitalize="none"
             placeholder="confirmation mot de passe"
-            secureTextEntry="true"
+            secureTextEntry={true}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
           />
