@@ -33,7 +33,7 @@ const MusicList = () => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, justifyContent: 'space-around'}}>
+      <View>
         <TextInput
           value={filters}
           onChangeText={setFilters}
@@ -41,6 +41,7 @@ const MusicList = () => {
         />
       </View>
       <FlatList
+        style={{flex: 1}}
         data={filteredData}
         renderItem={({item, index}) => {
           return <ItemMusicList data={item} style={{flex: 1}} />;
